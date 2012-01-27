@@ -1,0 +1,19 @@
+# Introduction
+This media type is a description of how a an Ad is represented in Finn.no.
+
+## Notational Conventions
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and
+"OPTIONAL" in this document are to be interpreted as described in BCP 14, [](#RFC2119), as scoped to those conformance targets.
+
+
+## General structure
+...
+
+# IANA Considerations
+...
+
+Specification: this document
+
+# Security Considerations
+None

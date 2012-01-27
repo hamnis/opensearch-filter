@@ -1,0 +1,39 @@
+This is the documentation of finn's restful dataformats.
+
+Prerequisites: 
+ install pandoc
+  Debian/Ubuntu:
+    apt-get install pandoc
+  OSX:
+    port install pandoc
+ 
+ get http://pypi.python.org/pypi/xml2rfc
+ Version 2.3.3 is broken and must be patched:
+ 
+ extract xml2rfc-2.3.3.tar.gz somewhere
+ run:
+  cd /path/to/extracted/xml2rfc-2.3.3
+  wget http://db.tt/hbUsBKcj -O base-writer.patch
+  patch -p0 < base-writer.patch
+
+ Make sure you have python-setuptools installed
+
+  Debian/Ubuntu:
+   apt-get install python-setuptools
+  OSX:
+   should be bundled with the OS
+
+ Now follow the INSTALL document in the xml2rfc package
+ 
+
+ install GNU Make
+   Debian/Ubuntu:
+    apt-get install build-essential
+   OSX:
+    Download and install XCode
+
+To build:
+ make
+ 
+to clean
+ make clean
