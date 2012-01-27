@@ -1,5 +1,5 @@
 # Introduction
-This media type is a description of how a an Ad is represented in Finn.no.
+This specification describes an extension to OpenSearch to allow clients to discover filtering capabilities.
 
 ## Notational Conventions
 
