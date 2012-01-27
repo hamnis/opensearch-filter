@@ -9,6 +9,9 @@ Prerequisites:
  
  get http://pypi.python.org/pypi/xml2rfc
  Version 2.3.3 is broken and must be patched:
+ Patch doesn't work for 2.3.5, so you need to get
+ the 2.3.3 version:
+ http://pypi.python.org/packages/source/x/xml2rfc/xml2rfc-2.3.3.tar.gz
  
  extract xml2rfc-2.3.3.tar.gz somewhere
  run:
