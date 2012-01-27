@@ -1,5 +1,6 @@
 # Introduction
-This specification describes an extension to OpenSearch to allow clients to discover filtering capabilities.
+This specification describes an extension to OpenSearch to allow clients to discover sorting capabilities in an OpenSearch
+description document.
 
 ## Notational Conventions
 
