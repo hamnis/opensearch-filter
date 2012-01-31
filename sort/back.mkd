@@ -1,13 +1,16 @@
 # TODOS
 * Decide namespace
 * Do we need a separate template for sorting? or what do we do here?
+* May it be interesting to define a "sort" field somehow?
+* Should the server decide what sorting options which are available?
+* This now only covers FINNs case. A more general solution is needed.
 
 # Examples
 
 ## Sort in an Atom result document
 
     <feed xmlns="http://www.w3.org/2005/Atom" xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
-    xmlns:f="http://purl.org/opensearch-filter/1.0">
+    xmlns:f="http://purl.org/opensearch-sort/1.0">
       <id>urn:id:1</id>
       <updated>2012-01-01T12.12.00Z</updated>
       <title>Search result for "foo"</title>
@@ -23,7 +26,7 @@
       <link href="http://example.com/search?q=foobar&amp;pw=10" rel="last"/>
       <link href="http://example.com/search?q=foobar&amp;pw=1" rel="first"/>
 
-      <f:sort name="foo" template="http://example.com/search?q=foobar&amp;filter={f:sort}">
+      <f:sort name="foo" template="http://example.com/search?q=foobar&amp;sort={f:sort}">
         <os:Query role="f:sort" f:sort="0" f:direction="ASC" />
         <os:Query role="f:sort" f:sort="1" f:direction="DESC" />
         <os:Query role="f:sort" f:sort="2" f:direction="ASC" />
@@ -40,7 +43,7 @@
 ## Second version
 
     <feed xmlns="http://www.w3.org/2005/Atom" xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
-    xmlns:f="http://purl.org/opensearch-filter/1.0">
+    xmlns:f="http://purl.org/opensearch-sort/1.0">
       <id>urn:id:1</id>
       <updated>2012-01-01T12.12.00Z</updated>
       <title>Search result for "foo"</title>
@@ -55,7 +58,7 @@
       <link href="http://example.com/search?q=foobar&amp;pw=2" rel="next"/>
       <link href="http://example.com/search?q=foobar&amp;pw=10" rel="last"/>
       <link href="http://example.com/search?q=foobar&amp;pw=1" rel="first"/>
-      <f:template rel="sort" href="http://example.com/search?q=foobar&filter={f:sort*}"/>
+      <f:template rel="sort" href="http://example.com/search?q=foobar&sort={f:sort*}"/>
       <os:Query role="f:sort" f:sort="0" f:direction="ASC" />
       <os:Query role="f:sort" f:sort="1" f:direction="DESC" />
       <os:Query role="f:sort" f:sort="2" f:direction="ASC" />
