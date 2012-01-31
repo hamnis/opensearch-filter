@@ -1,1 +1,77 @@
 # TODOS
+* Decide namespace
+* Decide which approach to use; Multiple os:Query or a wrapping filter.
+
+# Examples
+
+## Search in an Atom result document
+
+    <feed xmlns="http://www.w3.org/2005/Atom" xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
+    xmlns:f="http://purl.org/opensearch-filter/1.0">
+      <id>urn:id:1</id>
+      <updated>2012-01-01T12.12.00Z</updated>
+      <title>Search result for "foo"</title>
+      <author>
+        <name>Erlend Hamnaberg</name>
+      </author>
+      <os:Query searchTerms="foo"/>
+      <os:totalResults>100</os:totalResults>
+      <os:itemsPerPage>10</os:itemsPerPage>
+      <os:startIndex>1</os:startIndex>
+      <link href="http://example.com/search?q=foobar" rel="self"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=2" rel="next"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=10" rel="last"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=1" rel="first"/>
+      <f:filter name="foo" template="http://example.com/search?q=foobar&amp;filter={f:filter}">
+        <os:Query role="subset" f:filter="foo:bar" count="20"/>
+        <os:Query role="subset" f:filter="foo:baz" count="23"/>
+        <os:Query role="subset" f:filter="foo:ba2" count="20"/>
+        <os:Query role="subset" f:filter="foo:sos" count="37"/>
+      </f:filter>
+      <f:filter name="bar" template="http://example.com/search?q=foobar&amp;filter={f:filter}">
+        <os:Query role="subset" f:filter="bar:bar" count="50"/>
+        <os:Query role="subset" f:filter="bar:sos" count="50"/>
+      </f:filter>
+      <entry>
+        <id>urn:id:123</id>
+        <title>Item 1</title>
+        <updated>2012-01-01T12.12.00Z</updated>
+        <link rel="alternate" href="http://example.com/item/123"/>
+        <content>foo</content>
+      </entry>
+    </feed>
+
+## Second version
+
+    <feed xmlns="http://www.w3.org/2005/Atom" xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
+    xmlns:f="http://purl.org/opensearch-filter/1.0">
+      <id>urn:id:1</id>
+      <updated>2012-01-01T12.12.00Z</updated>
+      <title>Search result for "foo"</title>
+      <author>
+        <name>Erlend Hamnaberg</name>
+      </author>
+      <os:Query searchTerms="foo"/>
+      <os:totalResults>1</os:totalResults>
+      <os:itemsPerPage>10</os:itemsPerPage>
+      <os:startIndex>1</os:startIndex>
+      <link href="http://example.com/search?q=foobar" rel="self"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=2" rel="next"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=10" rel="last"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=1" rel="first"/>
+      <f:template rel="filter" href="http://example.com/search?q=foobar&filter={f:filter*}"/>
+      <os:Query role="subset" f:name="foo" f:filter="foo:bar" count="20"/>
+      <os:Query role="subset" f:name="foo" f:filter="foo:baz" count="23"/>
+      <os:Query role="subset" f:name="foo" f:filter="foo:ba2" count="20"/>
+      <os:Query role="subset" f:name="foo" f:filter="foo:sos" count="37"/>
+
+      <os:Query role="subset" f:name="bar" f:filter="bar:bar" count="50" title="Filter by Bar"/>
+      <os:Query role="subset" f:name="bar" f:filter="bar:sos" count="50" title="Filter by SoS"/>
+      <entry>
+        <id>urn:id:123</id>
+        <title>Item 1</title>
+        <updated>2012-01-01T12.12.00Z</updated>
+        <link rel="alternate" href="http://example.com/item/123"/>
+        <content>foo</content>
+      </entry>
+    </feed>

@@ -1,14 +1,18 @@
 # Introduction
-This media type is a description of how an AData Model is represented in a typical Application setting.
+This specification describes an extension to OpenSearch to allow clients to discover filtering capabilities in an OpenSearch
+description document.
 
 ## Notational Conventions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and
 "OPTIONAL" in this document are to be interpreted as described in BCP 14, [](#RFC2119), as scoped to those conformance targets.
 
+The XML elements are specified using Relax NG compact notation.
+
+
 
 # IANA Considerations
-None.
+The namespace `http://purl.org/opensearch-filter/1.0` SHOULD be registered as the namespace URI for this extension.
 
 Specification: this document
 

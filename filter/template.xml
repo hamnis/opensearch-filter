@@ -10,14 +10,14 @@
 <!ENTITY RFC2854 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2854.xml'>
 <!ENTITY RFC2046 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2046.xml'>
 ]>
-<rfc ipr="none" docName='draft-hamnaberg-finn.ad-01' category="std">
+<rfc category="std">
   <?rfc toc="yes"?>         <!-- generate a table of contents -->
   <?rfc symrefs="yes"?>     <!-- use anchors instead of numbers for references -->
   <?rfc sortrefs="yes" ?>   <!-- alphabetize the references -->
   <?rfc compact="yes" ?>    <!-- conserve vertical whitespace -->
   <?rfc subcompact="no" ?>  <!-- but keep a blank line between list items -->
   <front>
-    <title abbrev="Ad Media Type">Documentation of Finn.no Ad media type</title>
+    <title abbrev="Filtering in search results">Discovering filtering capabilities in OpenSearch</title>
 
     <author initials="E.H" surname="Hamnaberg"
             fullname="Erlend Hamnaberg">

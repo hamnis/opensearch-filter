@@ -1,1 +1,99 @@
 # TODOS
+* Decide namespace
+* Do we need a separate template for sorting? or what do we do here?
+
+# Examples
+
+## Sort in an Atom result document
+
+    <feed xmlns="http://www.w3.org/2005/Atom" xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
+    xmlns:f="http://purl.org/opensearch-filter/1.0">
+      <id>urn:id:1</id>
+      <updated>2012-01-01T12.12.00Z</updated>
+      <title>Search result for "foo"</title>
+      <author>
+        <name>Erlend Hamnaberg</name>
+      </author>
+      <os:Query searchTerms="foo"/>
+      <os:totalResults>100</os:totalResults>
+      <os:itemsPerPage>10</os:itemsPerPage>
+      <os:startIndex>1</os:startIndex>
+      <link href="http://example.com/search?q=foobar" rel="self"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=2" rel="next"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=10" rel="last"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=1" rel="first"/>
+
+      <f:sort name="foo" template="http://example.com/search?q=foobar&amp;filter={f:sort}">
+        <os:Query role="f:sort" f:sort="0" f:direction="ASC" />
+        <os:Query role="f:sort" f:sort="1" f:direction="DESC" />
+        <os:Query role="f:sort" f:sort="2" f:direction="ASC" />
+        <os:Query role="f:sort" f:sort="3" f:direction="ASC"/>
+      </f:filter>
+      <entry>
+        <id>urn:id:123</id>
+        <title>Item 1</title>
+        <updated>2012-01-01T12.12.00Z</updated>
+        <link rel="alternate" href="http://example.com/item/123"/>
+      </entry>
+    </feed>
+
+## Second version
+
+    <feed xmlns="http://www.w3.org/2005/Atom" xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
+    xmlns:f="http://purl.org/opensearch-filter/1.0">
+      <id>urn:id:1</id>
+      <updated>2012-01-01T12.12.00Z</updated>
+      <title>Search result for "foo"</title>
+      <author>
+        <name>Erlend Hamnaberg</name>
+      </author>
+      <os:Query searchTerms="foo"/>
+      <os:totalResults>1</os:totalResults>
+      <os:itemsPerPage>10</os:itemsPerPage>
+      <os:startIndex>1</os:startIndex>
+      <link href="http://example.com/search?q=foobar" rel="self"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=2" rel="next"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=10" rel="last"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=1" rel="first"/>
+      <f:template rel="sort" href="http://example.com/search?q=foobar&filter={f:sort*}"/>
+      <os:Query role="f:sort" f:sort="0" f:direction="ASC" />
+      <os:Query role="f:sort" f:sort="1" f:direction="DESC" />
+      <os:Query role="f:sort" f:sort="2" f:direction="ASC" />
+      <os:Query role="f:sort" f:sort="3" f:direction="ASC" />
+      <entry>
+        <id>urn:id:123</id>
+        <title>Item 1</title>
+        <updated>2012-01-01T12.12.00Z</updated>
+        <link rel="alternate" href="http://example.com/item/123"/>
+      </entry>
+    </feed>
+
+## Third version
+
+    <feed xmlns="http://www.w3.org/2005/Atom" xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
+    xmlns:f="http://purl.org/opensearch-filter/1.0">
+      <id>urn:id:1</id>
+      <updated>2012-01-01T12.12.00Z</updated>
+      <title>Search result for "foo"</title>
+      <author>
+        <name>Erlend Hamnaberg</name>
+      </author>
+      <os:Query searchTerms="foo"/>
+      <os:totalResults>1</os:totalResults>
+      <os:itemsPerPage>10</os:itemsPerPage>
+      <os:startIndex>1</os:startIndex>
+      <link href="http://example.com/search?q=foobar" rel="self"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=2" rel="next"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=10" rel="last"/>
+      <link href="http://example.com/search?q=foobar&amp;pw=1" rel="first"/>
+      <link href="http://example.com/search?q=foobar&amp;sort=1&amp;dir=ASC" rel="sort" f:sort="1" f:direction="ASC" title="Sort by last modified date Ascending"/>
+      <link href="http://example.com/search?q=foobar&amp;sort=2&amp;dir=ASC" rel="sort" f:sort="2" f:direction="ASC" title="Sort by last published date"/>
+      <link href="http://example.com/search?q=foobar&amp;sort=3&amp;dir=ASC" rel="sort" f:sort="2" f:direction="DESC" title="Sort by last modified date"/>
+      <link href="http://example.com/search?q=foobar&amp;sort=4&amp;dir=ASC" rel="sort" f:sort="1" f:direction="DESC" title="Sort by last modified date Descending"/>
+      <entry>
+        <id>urn:id:123</id>
+        <title>Item 1</title>
+        <updated>2012-01-01T12.12.00Z</updated>
+        <link rel="alternate" href="http://example.com/item/123"/>
+      </entry>
+    </feed>
