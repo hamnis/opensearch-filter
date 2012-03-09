@@ -1,6 +1,6 @@
 # Introduction
-This specification describes an extension to OpenSearch to allow clients to discover filtering capabilities in an OpenSearch
-description document.
+This specification describes an extension to OpenSearch to allow
+clients to discover filtering capabilities in an OpenSearchDescription document.
 
 ## Notational Conventions
 
@@ -9,11 +9,58 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 The XML elements are specified using Relax NG compact notation.
 
+## Namespace
+`http://purl.org/net/atom-ext/filter/1.0` is the namespace for the extension.
+
+
+# The filter extension element
+The `filter` element is the main element in this specification.
+
+    namespace f = "http://purl.org/net/atom-ext/filter/1.0"
+    namespace os = "http://a9.com/-/spec/opensearch/1.1/"
+
+    element f:filter {
+      attribute name { text }
+      attribute template { text }
+      element os:Query*
+    }
+
+The `template` attribute is goverened by the [URI-template](http://tools.ietf.org/html/draft-gregorio-uritemplate-08) spec,
+with one additional requirement. Variables in the template are expected to be found on the wrapped `os:Query` elements, using the same rules as OpenSearch.
+
+This means that the variables MUST be namespaced, and the namespace MUST be resolved in the XML document where it appears.
+See also the [OpenSearch](http://www.opensearch.org/Specifications/OpenSearch/1.1#OpenSearch_Query_element) specification for more information.
+This specification defines one attribute defined in [](#the-filter-attribute) which may be used as a starting point.
+
+The os:Query elements are RECOMMENDED to have a role of `subset`, as filtering usually entails a smaller resultset.
+
+# The filter attribute
+
+    namespace f = "http://purl.org/net/atom-ext/filter/1.0"
+
+    attribute f:filter { string }
+
+
+This is expected to appear on os:Query elements when the filter-template define the `{f:filter}` variable.
+
+# Example
+
+      <f:filter xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
+                xmlns:f="http://purl.org/net/atom-ext/filter/1.0"
+                name="foo"
+                template="http://example.com/search?q=foobar&amp;filter={f:filter}">
+        <os:Query role="subset" f:filter="foo:bar" count="20"/>
+        <os:Query role="subset" f:filter="foo:baz" count="23"/>
+        <os:Query role="subset" f:filter="foo:ba2" count="20"/>
+        <os:Query role="subset" f:filter="foo:sos" count="37"/>
+      </f:filter>
 
 
 # IANA Considerations
-The namespace `http://purl.org/opensearch-filter/1.0` SHOULD be registered as the namespace URI for this extension.
+Nothing is asked of IANA.
 
-Specification: this document
+Note to RFC-editor: this section can be removed once published.
 
 # Security Considerations
+
+There are no known security considerations at this time.

@@ -2,6 +2,7 @@
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' [
 <!ENTITY back SYSTEM 'back.xml'>
 <!ENTITY middle SYSTEM 'middle.xml'>
+<!ENTITY RFC2119 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
 <!ENTITY RFC5322 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5322.xml'>
 <!ENTITY RFC4627 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml'>
 <!ENTITY RFC4287 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4287.xml'>
@@ -19,13 +20,13 @@
   <front>
     <title abbrev="Filtering in search results">Discovering filtering capabilities in OpenSearch</title>
 
-    <author initials="E.H" surname="Hamnaberg"
+    <author initials="E" surname="Hamnaberg"
             fullname="Erlend Hamnaberg">
       <address>
         <email>erlend@hamnaberg.net</email>
       </address>
     </author>
-    <author initials="E.M" surname="Mogensen"
+    <author initials="E" surname="Mogensen"
             fullname="Erik Mogensen">
       <address>
         <email>erik@mogensoft.net</email>
@@ -51,6 +52,7 @@
   </middle>
   <back>
     <references>
+        &RFC2119;
 <!--     &RFC5322;
      &RFC4627;
      &RFC4287;

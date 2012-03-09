@@ -1,5 +1,9 @@
+#Changelog
+
+Added filter element
+
+
 # TODOS
-* Decide namespace
 * Decide which approach to use; Multiple os:Query or a wrapping filter.
 
 # Examples
@@ -7,7 +11,7 @@
 ## Search in an Atom result document
 
     <feed xmlns="http://www.w3.org/2005/Atom" xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
-    xmlns:f="http://purl.org/opensearch-filter/1.0">
+    xmlns:f="http://purl.org/net/atom-ext/filter/1.0">
       <id>urn:id:1</id>
       <updated>2012-01-01T12.12.00Z</updated>
       <title>Search result for "foo"</title>
@@ -44,7 +48,7 @@
 ## Second version
 
     <feed xmlns="http://www.w3.org/2005/Atom" xmlns:os="http://a9.com/-/spec/opensearch/1.1/"
-    xmlns:f="http://purl.org/opensearch-filter/1.0">
+    xmlns:f="http://purl.org/net/atom-ext/filter/1.0">
       <id>urn:id:1</id>
       <updated>2012-01-01T12.12.00Z</updated>
       <title>Search result for "foo"</title>
